@@ -1,3 +1,5 @@
+from unittest import loader
+
 from direct.showbase.ShowBase import ShowBase
 from direct.showbase.ShowBaseGlobal import globalClock
 from panda3d.core import Vec3, WindowProperties
@@ -21,7 +23,7 @@ class CarRoamingGame(ShowBase):
         # ----------------------------
         # LOAD ENVIRONMENT
         # ----------------------------
-        self.env = self.loader.loadModel("city/city.glb")
+        self.env = self.loader.loadModel("car/car.glb")
         self.env.reparentTo(self.render)
         self.env.setScale(10)
         self.env.setPos(0, 0, 0)
@@ -31,10 +33,11 @@ class CarRoamingGame(ShowBase):
         # ----------------------------
         self.car = self.loader.loadModel("car/car.glb")
         self.car.reparentTo(self.render)
-        self.car.setScale(1)
-        self.car.setPos(0, 0, 1)  # slightly above ground
-        self.car.setH(180)
+        self.car.setScale(50)  # adjust as needed
+        self.car.setPos(0, 10, 1)
+        self.car.setH(180)  # adjust if facing wrong way
         self.car.setTwoSided(True)
+        self.render.setShaderAuto()
 
         # ----------------------------
         # MOVEMENT VARIABLES
