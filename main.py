@@ -109,13 +109,15 @@ class CarRoamingGame(ShowBase):
         # ----------------------------
         # KEEP CAR ON GROUND (simple)
         # ----------------------------
-        self.car.setZ(1)
+        self.car.setZ(5)
 
         # ----------------------------
         # CAMERA FOLLOW SYSTEM
         # ----------------------------
         cam_offset = Vec3(0, -15, 6)
         self.camera.setPos(self.car.getPos() + cam_offset)
+        self.camera.reparentTo(self.car)
+        self.camera.setPos(0, -10, 3)
         self.camera.lookAt(self.car)
 
         return Task.cont
